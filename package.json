@@ -1,0 +1,45 @@
+{
+  "name": "env-schema-guard",
+  "version": "1.0.0",
+  "description": "Zero-dependency .env validator \u2014 define a schema, catch missing/invalid environment variables at startup instead of at runtime.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean --minify",
+    "test": "node --test test/validateEnv.test.mjs",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "keywords": [
+    "env",
+    "dotenv",
+    "environment-variables",
+    "validation",
+    "schema",
+    "config",
+    "startup-check",
+    "typescript"
+  ],
+  "author": "Tushar",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.12.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
